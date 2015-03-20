@@ -1,0 +1,21 @@
+window.translate.dashboard = {
+    hide_logged_out_agents: "Logged out Agents verbergen",
+    hide_queues: "Wachtlijsten verbergen",
+    break_time: "Break Time",
+    wrapping_up: "Wrapping up",
+    call_time: "Beltijd",
+    busy_since: "Bezet sinds",
+    no_active_call: "Geen actieve oproep...",
+    total_calls: "Totaal aantal oproepen",
+    missed_calls: "Gemiste oproepen",
+    clicking_here_will_send_you: "Hier klikken zal u naar de 'wachtlijst aanpassen' pagina sturen. Hier kan u de instellingen voor deze wachtlijst bijwerken, agents beheren en rapporten bekijken.",
+    select_the_device: "Selecteer het toestel dat u wil opbellen",
+    which_device: "Welk toestel?",
+    ring: "Bel",
+    cancel: "Annuleren",
+    call_waiting_log: "Call Waiting Log...",
+    eavesdrop_request_failed: "Eavesdrop Request failed. Error #",
+    devices_title: "Toestellen",
+    hide_queues_html: "Wachtlijsten verbergen",
+    show_queues_html: "Wachtlijsten tonen"
+};

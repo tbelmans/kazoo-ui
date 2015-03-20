@@ -1,0 +1,22 @@
+window.translate.report = {
+    generate_a_report_for: "Genereer een rapport voor:",
+    children_sub_accounts_only: "Enkel Children sub-accounts",
+    this_account_and_his_direct: "Deze account en zijn directe sub-accounts",
+    this_account_and_all_his_sub_accounts: "Deze account en al zijn sub-accounts",
+    generate: "Genereer",
+    total_number_of_softphones: "Totaal aantal Softphones:",
+    total_number_of_sip_devices: "Totaal aantal SIP toestellen:",
+    total_number_of_dids: "Totaal aantal DIDs:",
+    total_number_of_inbound_trunks: "Totaal aantal inkomende Trunks:",
+    total_number_of_outbound_trunks: "Totaal aantal uitgaande Trunks:",
+    total_number_of_credits: "Totaal aantal Credits:",
+    report_label: "Rapport",
+    report_title: "Rapport",
+    account_stitle: "Account",
+    sip_devices_stitle: "# SIP Toestellen",
+    softphones_stitle: "# Softphones",
+    dids_stitle: "# DIDs",
+    inbound_trunks_stitle: "# Inkomende Trunks",
+    outbound_trunks_stitle: "# Uitgaande Trunks",
+    available_credits_stitle: "Beschikbare Credits"
+};

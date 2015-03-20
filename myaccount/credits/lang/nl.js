@@ -1,0 +1,22 @@
+window.translate.credits = {
+    per_minute_calling: "Per-Minuut bellen",
+    flat_rate_calling: "Vast-Tarief (Flat-Rate) bellen",
+    pay_per_minute_allows_you: "Betaal-per-minuut laat u toe om enkel te betalen voor wat u verbruikt. DStort geld op uw account om te starten, betaal daarna in functie van uw verbruik.",
+    your_current_balance: "Uw huidige balans:",
+    i_would_like_to_add: "Ik wil toevoegen",
+    to_my_current_balance: "Aan mijn huidige balans",
+    purchase: "Koop",
+    flat_rate_calling_allows_you: "Flat-Rate laat u toe om maandelijks een vaste prijs te betalen, ongeacht uw verbruik.",
+    flat_rate_outbound_calling: "Flat-Rate uitgaande oproepen",
+    allow_up_to: "Toelaten tot",
+    simultaneous_outbound_calls: "simultaneous outbound calls to the US-48 at",
+    month_per_line: "Maand per lijn",
+    flat_rate_inbound_calling: "Vast-Tarief (Flat-Rate) inkomende oproepen",
+    simultaneous_inbound_calls_at: "simultaneous inbound calls at",
+    if_you_dont_want_flat_rate: "Als u geen vast tarief wil, dan zal uw account automatisch op betaal-per-minuut worden ingesteld",
+    save: "Bewaren",
+    add_credit: "(krediet toevoegen)",
+    your_on_file_credit_card_will_immediately: "Uw geregistreerde kredietkaart zal onmiddellijk worden gefactureerd voor alle veranderingen die u doet. Als u terugkerende services heeft aangepast, zal dit herberekend worden op uw factuur.<br/><br/>Bent u zeker dat u wil doorgaan?",
+    your_changes_have_been_saved: "Uw aanpassingen werden bewaard!",
+    manage_your_credits_and_limits: "Beheer uw credits en limieten."
+};
