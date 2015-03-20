@@ -304,7 +304,7 @@
                             <ul class="inputs-list">
                                 <li>
                                     <label>
-                                        {{if field_data.whitelabel.hide_powered}}
+                                        {{if field_data.whitelabel.hide_powered || typeof field_data.whitelabel.hide_powered === 'undefined'}}
                                         <input id="hide_powered" type="checkbox" name="whitelabel.hide_powered" checked="checked" rel="popover" data-content="${_t('hide_powered_by_data_content')}"/>
                                         {{else}}
                                         <input id="hide_powered" type="checkbox" name="whitelabel.hide_powered" rel="popover" data-content="${_t('hide_powered_by_data_content')}" />
@@ -321,7 +321,7 @@
                             <ul class="inputs-list">
                                 <li>
                                     <label>
-                                        {{if field_data.whitelabel.hide_registration}}
+                                        {{if field_data.whitelabel.hide_registration || typeof field_data.whitelabel.hide_registration === 'undefined'}}
                                         <input id="hide_registration" type="checkbox" name="whitelabel.hide_registration" checked="checked" rel="popover" data-content="${_t('hide_signup_data_content')}"/>
                                         {{else}}
                                         <input id="hide_registration" type="checkbox" name="whitelabel.hide_registration" rel="popover" data-content="${_t('hide_signup_data_content')}" />
@@ -338,7 +338,7 @@
                             <ul class="inputs-list">
                                 <li>
                                     <label>
-                                        {{if field_data.whitelabel.hide_credits}}
+                                        {{if field_data.whitelabel.hide_credits || typeof field_data.whitelabel.hide_credits === 'undefined'}}
                                         <input id="hide_credits" type="checkbox" name="whitelabel.hide_credits" checked="checked" rel="popover" data-content="${_t('hide_credits_data_content')}"/>
                                         {{else}}
                                         <input id="hide_credits" type="checkbox" name="whitelabel.hide_credits" rel="popover" data-content="${_t('hide_credits_data_content')}" />
@@ -402,7 +402,7 @@
                      {{/if}}
                     </div>
 
-                    <hr/>
+<!--                    <hr/>
                     <h3>${_t('porting')}</h3>
 
                     <div class="clearfix">
@@ -438,9 +438,9 @@
                         <div class="input">
                             <input class="span4" id="white_label_port_terms" name="whitelabel.port.terms" type="text" placeholder="http://mycompany.com/terms" value="${field_data.whitelabel.port.terms}" rel="popover" data-content="${_t('terms_data_content')}"/>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <hr/>
+<!--                    <hr/>
                     <h3>${_t('trunks')}</h3>
 
                     <div class="clearfix">
@@ -453,7 +453,32 @@
                     <div class="clearfix">
                         <label for="white_label_twoway_trunks_price">${_t('twoway_trunks_price')}</label>
                         <div class="input">
-                            <input class="span4" id="white_label_twoway_trunks_price" name="whitelabel.twoway_trunks_price" type="text" placeholder="$24.99" value="${field_data.whitelabel.twoway_trunks_price}" rel="popover" data-content="${_t('twoway_trunks_price_data_content')}"/>
+                            <input class="span4" id="white_label_twoway_trunks_price" name="whitelabel.twoway_trunks_price" type="text" placeholder="$29.99" value="${field_data.whitelabel.twoway_trunks_price}" rel="popover" data-content="${_t('twoway_trunks_price_data_content')}"/>
+                        </div>
+                    </div> -->
+
+                    <hr/>
+                    <h3>${_t('language')}</h3>
+                    <div class="clearfix">
+                        <label for="white_label_language">${_t('language')}</label>
+                        <div class="input">
+                            <select class="span4" id="white_label_language" name="whitelabel.language">
+				{{if field_data.whitelabel.language === 'en'}}
+				<option value="en" selected>English</option>
+				{{else}}
+				<option value="en">English</option>
+				{{/if}}
+				{{if field_data.whitelabel.language === 'nl'}}
+				<option value="nl" selected>Nederlands</option>
+				{{else}}
+				<option value="nl">Nederlands</option>
+				{{/if}}
+				{{if field_data.whitelabel.language === 'fr'}}
+				<option value="fr" selected>Fran&ccedil;ais</option>
+				{{else}}
+				<option value="fr">Fran&ccedil;ais</option>
+				{{/if}}
+			    </select>
                         </div>
                     </div>
 
@@ -486,9 +511,7 @@
         <div class="buttons-right">
             {{if data.id}}
                 <button class="btn primary accounts_manager-switch">${_t('use_account')}</button>
-                {{if role === 'admin'}}
-                    <button class="btn danger accounts_manager-delete">${_t('delete')}</button>
-                {{/if}}
+                <button class="btn danger accounts_manager-delete">${_t('delete')}</button>
             {{/if}}
             <button class="btn success accounts_manager-save">${_t('save')}</button>
         </div>

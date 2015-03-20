@@ -20,7 +20,7 @@
 		 	<li><a href="#call_forward">${_t('call_forward')}</a></li>
 		 	<li><a href="#password_management">${_t('password_management')}</a></li>
 		 	<li><a href="#hot_desking">${_t('hot_desking')}</a></li>
-            <li><a href="#restrictions">${_t('restrictions')}</a></li>
+            <!--<li><a href="#restrictions">${_t('restrictions')}</a></li>-->
 		</ul>
 		<form id="user-form" action="#" method="post">
 			<div class="pill-content">
@@ -157,20 +157,14 @@
 	                    </div>
 
 	                    {{if field_data.new_user}}
-	                        <button type="button" class="btn add_device" data-new_user="${field_data.new_user}">${_t('add_a_new_device')}</button>
+	                        <button class="btn add_device" data-new_user="${field_data.new_user}">${_t('add_a_new_device')}</button>
 	                    {{else}}
-	                        <button type="button" class="btn add_device" data-user_id="${data.id}">${_t('add_a_new_device')}</button>
+	                        <button class="btn add_device" data-user_id="${data.id}">${_t('add_a_new_device')}</button>
 	                    {{/if}}
 	                </div>
 	            </div>
 
 	            <div id="caller_id">
-	            	<div class="clearfix">
-						<label for="name">${_t('presence_id')}</label>
-						<div class="input">
-							<input class="span4" id="presence_id" name="presence_id" type="text" placeholder="${_t('presence_id_placeholder')}" value="${data.presence_id}" rel="popover" data-content="${_t('presence_id_help')}"/>
-						</div>
-					</div>
 					<h3>${_t('in_house_calls')}</h3>
 					<div class="clearfix">
 						<label for="advanced_caller_id_name_internal">${_t('caller_id_name')}</label>
@@ -560,7 +554,7 @@
                     {{/if}}
 	            </div>
 
-                <div id="restrictions">
+                <!--<div id="restrictions">
                     <div class="clearfix">
                         <div class="input">
                             <ul class="inputs-list">
@@ -596,8 +590,8 @@
 						</div>
 					</div>
                     {{/each}}
-                </div>
-			</div>
+                </div>-->
+		</div>
 		</form>
 		<div class="buttons-right">
 			{{if data.id}}

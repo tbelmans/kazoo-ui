@@ -1,224 +1,120 @@
-winkstart.module('myaccount', 'myaccount', {
-        css: [
-            'css/style.css',
-            'css/popups.css'
-        ],
-
-        templates: {
-            myaccount: 'tmpl/myaccount.html',
-            tab_module: 'tmpl/tab_module.html'
-        },
-
-        subscribe: {
-            'myaccount.initialized' : 'initialized',
-            'myaccount.module_activate': 'module_activate',
-            'myaccount.display': 'render_myaccount',
-            'auth.account.loaded': 'activate'
-        }
+winkstart.module("myaccount", "myaccount", {
+    css: ["css/style.css", "css/popups.css"],
+    templates: {
+        myaccount: "tmpl/myaccount.html",
+        tab_module: "tmpl/tab_module.html"
     },
-
-    function() {
-        var THIS = this;
-
-        if('modules' in winkstart.apps[THIS.__module]) {
-            if('whitelist' in winkstart.apps[THIS.__module].modules) {
-                THIS.modules = {};
-
-                $.each(winkstart.apps[THIS.__module].modules.whitelist, function(k, v) {
-                    THIS.modules[v] = false;
-                });
-            }
-
-            if('blacklist' in winkstart.apps[THIS.__module].modules) {
-                $.each(winkstart.apps[THIS.__module].modules.blacklist, function(k, v) {
-                    if(v in THIS.modules) {
-                        delete THIS.modules[v];
-                    }
-                });
-            }
-        }
-
-        THIS.uninitialized_count = THIS._count(THIS.modules);
-
-        //THIS.initialization_check();
-
-        THIS.whapp_config();
+    subscribe: {
+        "myaccount.initialized": "initialized",
+        "myaccount.module_activate": "module_activate",
+        "myaccount.display": "render_myaccount",
+        "auth.account.loaded": "activate"
+    }
+}, function() {
+    var e = this;
+    "modules" in winkstart.apps[e.__module] && ("whitelist" in winkstart.apps[e.__module].modules && (e.modules = {}, $.each(winkstart.apps[e.__module].modules.whitelist, function(t, n) {
+        e.modules[n] = !1
+    })), "blacklist" in winkstart.apps[e.__module].modules && $.each(winkstart.apps[e.__module].modules.blacklist, function(t, n) {
+        n in e.modules && delete e.modules[n]
+    })), e.uninitialized_count = e._count(e.modules), e.whapp_config()
+}, {
+    whapp_vars: {
+        billing_provider: "braintree"
     },
-    {
-        whapp_vars: {
-            billing_provider: 'braintree'
-        },
-
-        /* A modules object is required for the loading routine.
-         * The format is as follows:
-         * <module name>: <initialization status>
-         */
-        modules: {
-            'app_store': false,
-            'billing': false,
-            'report': false,
-            'personal_info': false,
-            'nav': false,
-            'statistics': false,
-            'credits': false
-        },
-        /* The following code is generic and should be abstracted.
-         * For the time being, you can just copy and paste this
-         * into other whapps.
-         *
-         * BEGIN COPY AND PASTE CODE
-         */
-        is_initialized: false,
-
-        uninitialized_count: 1337,
-
-        initialized: function(user_data) {
-            var THIS = this;
-
-            THIS.is_initialized = true;
-            THIS.list_submodules.list.sort();
-
-            THIS.setup_page(user_data);
-        },
-
-        activate: function(user_data) {
-            var THIS = this;
-
-            THIS.whapp_auth(function() {
-                THIS.initialization_check(user_data);
-                winkstart.config.advancedView = user_data.advanced;
-            });
-        },
-
-        initialization_check: function(user_data) {
-            var THIS = this;
-
-            if (!THIS.is_initialized) {
-                // Load the modules
-
-                $.each(THIS.modules, function(k, v) {
-                    if(!v) {
-                        THIS.modules[k] = true;
-                        winkstart.module(THIS.__module, k).init(function() {
-                            winkstart.log(THIS.__module + ': Initialized ' + k);
-
-                            if(!(--THIS.uninitialized_count)) {
-                                winkstart.publish(THIS.__module + '.initialized', user_data);
-                            }
-                        });
-                    }
-                })
-
-            } else {
-                THIS.setup_page(user_data);
-            }
-        },
-
-        module_activate: function(args) {
-            var THIS = this;
-
-            THIS.whapp_auth(function() {
-                winkstart.publish(args.name + '.activate');
-            });
-        },
-
-        whapp_auth: function(callback) {
-            var THIS = this;
-
-            if('auth_token' in winkstart.apps[THIS.__module] && winkstart.apps[THIS.__module].auth_token) {
-                callback();
-            }
-            else {
-                winkstart.publish('auth.shared_auth', {
-                    app_name: THIS.__module,
-                    callback: (typeof callback == 'function') ? callback : undefined
-                });
-            }
-        },
-
-        _count: function(obj) {
-            var count = 0;
-
-            $.each(obj, function() {
-                count++;
-            });
-
-            return count;
-        },
-        /* END COPY AND PASTE CODE
-         * (Really need to figure out a better way...)
-         */
-
-        // A setup_page function is required for the copy and paste code
-        setup_page: function(user_data) {
-            var THIS = this;
-
-            winkstart.publish('nav.activate', user_data);
-            winkstart.publish('credits.activate');
-        },
-
-        orig_whapp_config: $.extend(true, {}, winkstart.apps['myaccount']),
-
-        whapp_config: function() {
-            var THIS = this;
-
-            winkstart.apps['myaccount'] = $.extend(true, {
-                api_url: winkstart.apps['auth'].api_url,
-                account_id: winkstart.apps['auth'].account_id,
-                user_id: winkstart.apps['auth'].user_id
-            }, THIS.orig_whapp_config);
-
-            $.extend(winkstart.apps[THIS.__module], THIS.whapp_vars);
-        },
-
-        list_submodules: {
-            list: []
-        },
-
-        render_myaccount: function() {
-            var THIS = this,
-                popup;
-
-            var template_data = {
+    modules: {
+        app_store: !1,
+        /*billing: !1,*/
+        /*report: !1,*/
+        personal_info: !1,
+        nav: !1,
+        statistics: !1,
+        credits: !1
+    },
+    is_initialized: !1,
+    uninitialized_count: 1337,
+    initialized: function(e) {
+        var t = this;
+        t.is_initialized = !0, t.list_submodules.list.sort(), t.setup_page(e)
+    },
+    activate: function(e) {
+        var t = this;
+        t.whapp_auth(function() {
+            t.initialization_check(e), winkstart.config.advancedView = e.advanced
+        })
+    },
+    initialization_check: function(e) {
+        var t = this;
+        t.is_initialized ? t.setup_page(e) : $.each(t.modules, function(n, r) {
+            r || (t.modules[n] = !0, winkstart.module(t.__module, n).init(function() {
+                winkstart.log(t.__module + ": Initialized " + n), --t.uninitialized_count || winkstart.publish(t.__module + ".initialized", e)
+            }))
+        })
+    },
+    module_activate: function(e) {
+        var t = this;
+        t.whapp_auth(function() {
+            winkstart.publish(e.name + ".activate")
+        })
+    },
+    whapp_auth: function(e) {
+        var t = this;
+        "auth_token" in winkstart.apps[t.__module] && winkstart.apps[t.__module].auth_token ? e() : winkstart.publish("auth.shared_auth", {
+            app_name: t.__module,
+            callback: typeof e == "function" ? e : undefined
+        })
+    },
+    _count: function(e) {
+        var t = 0;
+        return $.each(e, function() {
+            t++
+        }), t
+    },
+    setup_page: function(e) {
+        var t = this;
+        winkstart.publish("nav.activate", e), winkstart.publish("credits.activate")
+    },
+    orig_whapp_config: $.extend(!0, {}, winkstart.apps.myaccount),
+    whapp_config: function() {
+        var e = this;
+        winkstart.apps.myaccount = $.extend(!0, {
+            api_url: winkstart.apps.auth.api_url,
+            account_id: winkstart.apps.auth.account_id,
+            user_id: winkstart.apps.auth.user_id
+        }, e.orig_whapp_config), $.extend(winkstart.apps[e.__module], e.whapp_vars)
+    },
+    list_submodules: {
+        list: []
+    },
+    render_myaccount: function() {
+        var e = this,
+            t, n = {
                 data: {
-                    list_module: THIS.list_submodules
+                    list_module: e.list_submodules
                 }
             };
-
-            popup_html = THIS.templates.myaccount.tmpl({ data: { list_module: THIS.list_submodules } }),
-
-            $.each(THIS.list_submodules.list, function(k, v) {
-                var template_data = {
-                    data: {
-                        key: v,
-                        display_name: THIS.list_submodules[v].display_name
-                    }
+        popup_html = e.templates.myaccount.tmpl({
+            data: {
+                list_module: e.list_submodules
+            }
+        }), $.each(e.list_submodules.list, function(t, n) {
+            var r = {
+                data: {
+                    key: n,
+                    display_name: e.list_submodules[n].display_name
                 }
-
-                $('.settings_tabs', popup_html).append(THIS.templates.tab_module.tmpl(template_data));
-            });
-
-            $('#tabs > ul a', popup_html).click(function(ev) {
-                ev.preventDefault();
-
-                $('#tabs > ul a').removeClass('current');
-                $(this).addClass('current');
-
-                winkstart.publish($(this).dataset('submodule') + '.activate', { target: $('#content', popup_html) });
-            });
-
-            $('#tabs > ul a', popup_html).first().trigger('click');
-
-            popup = winkstart.dialog(popup_html, {
-                height: 'auto',
-                modal: true,
-                title: 'My account',
-                open: function() {
-                    // Gross hack to prevent scroll bar glitch (should be in the css sheet)
-                    $(this).css('overflow-x', 'hidden');
-                    $(this).css('max-height', $(document).height()-180);
-                }
-            });
-        }
+            };
+            $(".settings_tabs", popup_html).append(e.templates.tab_module.tmpl(r))
+        }), $("#tabs > ul a", popup_html).click(function(e) {
+            e.preventDefault(), $("#tabs > ul a").removeClass("current"), $(this).addClass("current"), winkstart.publish($(this).dataset("submodule") + ".activate", {
+                target: $("#content", popup_html)
+            })
+        }), $("#tabs > ul a", popup_html).first().trigger("click"), t = winkstart.dialog(popup_html, {
+            height: "auto",
+            modal: !0,
+            title: "My account",
+            open: function() {
+                $(this).css("overflow-x", "hidden"), $(this).css("max-height", $(document).height() - 180)
+            }
+        })
     }
-);
+});

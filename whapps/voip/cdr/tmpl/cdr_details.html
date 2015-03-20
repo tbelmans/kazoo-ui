@@ -9,7 +9,7 @@
             {{each(k, v) cdr_fields}}
                 <div class="row">
                     <div class="column first">${v.key}</div>
-                    <div class="column second">&nbsp;${v.value}</div>
+                    <div class="column second">&nbsp;{{html v.value}}</div>
                     <div class="clear"/>
                 </div>
             {{/each}}

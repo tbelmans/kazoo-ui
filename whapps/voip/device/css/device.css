@@ -3,24 +3,12 @@
     background-position: 8px center;
     background-repeat: no-repeat;
 }
-
 #device-listpanel ul .list-element.registered {
     background-image: url(../images/green.png);
 }
-
 #device-listpanel ul .list-element.disabled {
     background-image: url(../images/gray.png);
 }
-
-/* If you are building a widget that could be used by EVERYONE, please consider adding your CSS
- * to the global CSS stylesheet (talk to Dhruvi). Otherwise, add it here only */
-
-/* DO NOT USE IDs FOR CSS! CLASSES ONLY! */
-
-/**************************
-----TOP TABS MEDIA---------
-****************************/
-
 .media_tabs {
 	background-color: #555555;
     border: 1px solid #363636;
@@ -33,25 +21,19 @@
     overflow-x: auto;
     white-space: nowrap;
 }
-
 .media_tabs .buttons {
-	width: 128px;
+	width: 151px;
 	height: 90px;
-
 	line-height: 90px;
     display: inline-block;
 	position: relative;
 	margin: 0 3px;
-
     text-align: center;
-
     -moz-border-radius: 12px;
     -webkit-border-radius: 12px;
     border-radius: 12px;
-
     cursor: pointer;
     opacity: 0.4;
-
     background: #05addc;
     background: -moz-linear-gradient(top,  #05addc 0%, #0099b7 25%, #008ca8 50%, #0099b7 75%, #05addc 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#05addc), color-stop(25%,#0099b7), color-stop(50%,#008ca8), color-stop(75%,#0099b7), color-stop(100%,#05addc));
@@ -60,44 +42,36 @@
     background: -ms-linear-gradient(top,  #05addc 0%,#0099b7 25%,#008ca8 50%,#0099b7 75%,#05addc 100%);
     background: linear-gradient(to bottom,  #05addc 0%,#0099b7 25%,#008ca8 50%,#0099b7 75%,#05addc 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05addc', endColorstr='#05addc',GradientType=0 );
-
 }
-
 .media_tabs .buttons:hover {
     -moz-box-shadow: 3px 5px 10px #383838;
     -webkit-box-shadow: 3px 5px 10px #383838;
     box-shadow: 3px 5px 10px #383838;
     opacity: 0.6;
 }
-
 .media_tabs .buttons.current, .media_tabs .buttons.current:hover {
 	-moz-box-shadow: 3px 5px 10px #383838;
 	-webkit-box-shadow: 3px 5px 10px #383838;
 	box-shadow: 3px 5px 10px #383838;
     opacity: 1;
 }
-
 .media_tabs .buttons .label_device {
     font-size: 12px;
-    text-transform: uppercase;
+/*    text-transform: uppercase;*/
     font-weight: bold;
     color: white;
 }
-
 #device-view .realm_label {
     line-height: 22px;
 }
-
 .media_pane {
 	margin-left: 0;
 	margin-top: 40px;
 }
-
 .threshold_device {
     padding: 10px;
     background: #fff;
 }
-
 .threshold_device .header {
     font-size: 15px;
     color: #333333;
@@ -105,7 +79,6 @@
     text-shadow: 1px 1px 1px #eee;
     text-align: center;
 }
-
 .threshold_device .seats_price {
     background: url(../images/pricing.png) no-repeat center;
     width: 829px;
